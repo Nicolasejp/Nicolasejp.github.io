@@ -3,61 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Site Interativo</title>
+  <title>Celular do Nicolas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    main {
+      padding: 60px 20px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: white;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    button {
+      margin: 10px 0;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+
+    #falarBox, #appBox {
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Meu Site Interativo</h1>
-  
-  <!-- Botão "Falar" -->
-  <button onclick="mostrarCaixaFalar()">Falar</button>
-  <div id="falarBox" style="display: none;">
-    <label for="falarInput">O que você quer falar?</label><br>
-    <input type="text" id="falarInput"><br>
-    <button onclick="enviarFala()">Enviar</button>
-  </div>
-  
-  <!-- Botão "Explode" -->
-  <button onclick="irPara('https://trigger.macrodroid.com/ab0de550-4b06-4a12-9ea7-932857c9aff7/explode')">Explode</button>
-  
-  <!-- Botão "Yeah" -->
-  <button onclick="irPara('https://trigger.macrodroid.com/ab0de550-4b06-4a12-9ea7-932857c9aff7/yah')">Yeah</button>
-  
-  <!-- Botão "Desligar Tela" -->
-  <button onclick="irPara('https://trigger.macrodroid.com/ab0de550-4b06-4a12-9ea7-932857c9aff7/Butão')">Desligar Tela</button>
+  <header>
+    <h1>Celular do Nicolas</h1>
+  </header>
 
-  <hr>
-  
-  <!-- Controle de Brilho -->
-  <label for="brilhoSlider">Controle de Brilho:</label>
-  <input type="range" id="brilhoSlider" min="0" max="100" value="50" oninput="atualizarValor('brilhoOutput', this.value)">
-  <output id="brilhoOutput">50</output>
-  <button onclick="ajustarBrilho()">Aplicar Brilho</button>
-  
-  <hr>
-  
-  <!-- Controle de Volume -->
-  <label for="volumeSlider">Controle de Volume:</label>
-  <input type="range" id="volumeSlider" min="0" max="100" value="50" oninput="atualizarValor('volumeOutput', this.value)">
-  <output id="volumeOutput">50</output>
-  <button onclick="ajustarVolume()">Aplicar Volume</button>
-  
-  <hr>
-  
-  <!-- Abrir Aplicativo -->
-  <button onclick="mostrarCaixaApp()">Abrir Aplicativo</button>
-  <div id="appBox" style="display: none;">
-    <label for="appInput">Nome do Aplicativo:</label><br>
-    <input type="text" id="appInput"><br>
-    <button onclick="abrirApp()">Abrir</button>
-  </div>
+  <main>
+    <section id="falar">
+      <h2>Falar</h2>
+      <button onclick="mostrarCaixaFalar()">Falar</button>
+      <div id="falarBox">
+        <label for="falarInput">O que você quer falar?</label><br>
+        <input type="text" id="falarInput"><br>
+        <button onclick="enviarFala()">Enviar</button>
+      </div>
+    </section>
 
+    <section id="explosoes">
+      <h2>Explosões e Outros</h2>
+      <button onclick="irPara('https://trigger.macrodroid.com/ab0de550-4b06-4a12-9ea7-932857c9aff7/explode')">Explode</button>
+      <button onclick="irPara('https://trigger.macrodroid.com/ab0de550-4b06-4a12-9ea7-932857c9aff7/yah')">Yeah</button>
+      <button onclick="irPara('https://trigger.macrodroid.com/ab0de550-4b06-4a12-9ea7-932857c9aff7/Butão')">Desligar Tela</button>
+    </section>
+
+    <section id="controles">
+      <h2>Controles de Brilho e Volume</h2>
+      <div>
+        <label for="brilhoSlider">Controle de Brilho:</label>
+        <input type="range" id="brilhoSlider" min="0" max="100" value="50" oninput="atualizarValor('brilhoOutput', this.value)">
+        <output id="brilhoOutput">50</output>
+        <button onclick="ajustarBrilho()">Aplicar Brilho</button>
+      </div>
+      
+      <div>
+        <label for="volumeSlider">Controle de Volume:</label>
+        <input type="range" id="volumeSlider" min="0" max="100" value="50" oninput="atualizarValor('volumeOutput', this.value)">
+        <output id="volumeOutput">50</output>
+        <button onclick="ajustarVolume()">Aplicar Volume</button>
+      </div>
+    </section>
+
+    <section id="apps">
+      <h2>Abrir Aplicativos</h2>
+      <button onclick="mostrarCaixaApp()">Abrir Aplicativo</button>
+      <div id="appBox">
+        <label for="appInput">Nome do Aplicativo:</label><br>
+        <input type="text" id="appInput"><br>
+        <button onclick="abrirApp()">Abrir</button>
+      </div>
+    </section>
+  </main>
+  
   <script>
-    // Função para mostrar a caixa de falar
     function mostrarCaixaFalar() {
       document.getElementById("falarBox").style.display = "block";
     }
 
-    // Função para enviar a fala digitada
     function enviarFala() {
       const texto = document.getElementById("falarInput").value;
       if (texto.trim() !== "") {
@@ -68,36 +132,30 @@
       }
     }
 
-    // Função genérica para redirecionar para uma URL específica
     function irPara(url) {
       window.location.href = url;
     }
 
-    // Função para atualizar o valor exibido ao lado do slider
     function atualizarValor(outputId, value) {
       document.getElementById(outputId).textContent = value;
     }
 
-    // Função para ajustar o brilho
     function ajustarBrilho() {
       const valor = document.getElementById("brilhoSlider").value;
       const url = `https://trigger.macrodroid.com/ab0de550-4b06-4a12-9ea7-932857c9aff7/brilho?brilho=${valor}`;
       window.location.href = url;
     }
 
-    // Função para ajustar o volume
     function ajustarVolume() {
       const valor = document.getElementById("volumeSlider").value;
       const url = `https://trigger.macrodroid.com/ab0de550-4b06-4a12-9ea7-932857c9aff7/volume?volume=${valor}`;
       window.location.href = url;
     }
 
-    // Função para mostrar a caixa de abrir aplicativo
     function mostrarCaixaApp() {
       document.getElementById("appBox").style.display = "block";
     }
 
-    // Função para abrir o aplicativo digitado
     function abrirApp() {
       const nomeApp = document.getElementById("appInput").value;
       if (nomeApp.trim() !== "") {
@@ -110,4 +168,3 @@
   </script>
 </body>
 </html>
-
